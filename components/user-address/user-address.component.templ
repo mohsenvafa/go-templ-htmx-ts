@@ -1,0 +1,50 @@
+package useraddress
+
+type Address struct {
+	ID         int    `json:"id"`
+	Street     string `json:"street"`
+	City       string `json:"city"`
+	State      string `json:"state"`
+	ZipCode    string `json:"zip_code"`
+	Country    string `json:"country"`
+	IsDefault  bool   `json:"is_default"`
+}
+
+templ UserAddress(addresses []Address) {
+	<div class="user-address" data-component="user-address">
+		<div class="address-header">
+			<h3>Addresses</h3>
+			<p>Manage your saved addresses</p>
+		</div>
+		
+		<div class="addresses-list">
+			for _, address := range addresses {
+				<div class="address-item">
+					<div class="address-content">
+						<div class="address-main">
+							<strong>{templ.EscapeString(address.Street)}</strong>
+							<p>{templ.EscapeString(address.City)}, {templ.EscapeString(address.State)} {templ.EscapeString(address.ZipCode)}</p>
+							<p>{templ.EscapeString(address.Country)}</p>
+						</div>
+						if address.IsDefault {
+							<div class="default-badge">Default</div>
+						}
+					</div>
+					<div class="address-actions">
+						<button class="btn btn-sm btn-outline">Edit</button>
+						if !address.IsDefault {
+							<button class="btn btn-sm btn-primary">Set Default</button>
+						}
+					</div>
+				</div>
+			}
+		</div>
+		
+		<div class="address-actions">
+			<button class="btn btn-primary">Add New Address</button>
+			<button class="btn btn-outline" hx-get="/user-address" hx-target="#component-content" hx-swap="innerHTML">
+				Refresh Addresses
+			</button>
+		</div>
+	</div>
+}

@@ -1,0 +1,40 @@
+package userprofile
+
+type User struct {
+	ID     int    `json:"id"`
+	Name   string `json:"name"`
+	Email  string `json:"email"`
+	Phone  string `json:"phone"`
+	Bio    string `json:"bio"`
+	Avatar string `json:"avatar"`
+}
+
+templ UserProfile(user User) {
+	<div class="user-profile" data-component="user-profile">
+		<div class="profile-header">
+			<img src={templ.URL(user.Avatar)} alt="Profile Picture" class="profile-avatar"/>
+			<div class="profile-info">
+				<h3>{templ.EscapeString(user.Name)}</h3>
+				<p class="profile-email">{templ.EscapeString(user.Email)}</p>
+			</div>
+		</div>
+		
+		<div class="profile-details">
+			<div class="detail-item">
+				<label>Phone:</label>
+				<span>{templ.EscapeString(user.Phone)}</span>
+			</div>
+			
+			<div class="detail-item">
+				<label>Bio:</label>
+				<p class="bio-text">{templ.EscapeString(user.Bio)}</p>
+			</div>
+		</div>
+		
+		<div class="profile-actions">
+			<button class="btn btn-outline" hx-get="/user-profile" hx-target="#component-content" hx-swap="innerHTML">
+				Refresh Profile
+			</button>
+		</div>
+	</div>
+}

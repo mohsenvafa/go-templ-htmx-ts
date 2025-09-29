@@ -1,0 +1,56 @@
+package index
+
+import "ts-go/components/page-header"
+
+templ IndexPage() {
+	<!DOCTYPE html>
+	<html lang="en">
+		<head>
+			<meta charset="UTF-8"/>
+			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+			<title>Go HTMX App</title>
+		<script src="https://unpkg.com/htmx.org@1.9.10"></script>
+		<script type="module" src="/static/js/dist/main.js"></script>
+		<link rel="stylesheet" href="/static/css/style.css"/>
+		</head>
+		<body>
+			<div class="container" data-component="index">
+				@pageheader.PageHeader()
+
+				<main class="main-content">
+					<div class="components-grid">
+						<div class="component-card">
+							<h2>User Profile</h2>
+							<p>Display user information and profile details</p>
+							<button 
+								class="btn btn-primary" 
+								hx-get="/user-profile" 
+								hx-target="#component-content"
+								hx-swap="innerHTML">
+								Load User Profile
+							</button>
+						</div>
+
+						<div class="component-card">
+							<h2>User Address</h2>
+							<p>Display user addresses and location information</p>
+							<button 
+								class="btn btn-secondary" 
+								hx-get="/user-address" 
+								hx-target="#component-content"
+								hx-swap="innerHTML">
+								Load User Address
+							</button>
+						</div>
+					</div>
+
+					<div id="component-content" class="component-display">
+						<div class="placeholder">
+							<p>Click a button above to load a component</p>
+						</div>
+					</div>
+				</main>
+			</div>
+		</body>
+	</html>
+}

@@ -1,0 +1,16 @@
+{
+  "name": "ts-go",
+  "version": "1.0.0",
+  "description": "A simple Go web application with HTMX integration featuring two components: User Profile and User Address.",
+  "main": "index.js",
+  "devDependencies": {
+    "esbuild": "^0.25.10",
+    "typescript": "^5.9.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
