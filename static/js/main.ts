@@ -1,6 +1,6 @@
 // Main TypeScript entry point
 // Uses component registry for lazy loading
-
+// import 'htmx.org'
 import { registerComponent, initializeComponents } from './components/registry'
 import { IndexComponent } from '@components/index/index.component'
 import { UserProfileComponent } from '@components/user-profile/user-profile.component'

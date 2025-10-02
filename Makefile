@@ -17,6 +17,7 @@ build-watch:
 
 run:
 	@echo "Starting Go application..."
+	@templ generate
 	@go run main.go
 
 clean:
